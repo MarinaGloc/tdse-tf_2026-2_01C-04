@@ -1,14 +1,14 @@
-Propuesta de Trabajo Final: Dispensador interactivo de premios para mascotas  
+# **Propuesta de Trabajo Final: Dispensador interactivo de premios para mascotas** 
 <br/>Autores: Marina Gloc, Franco Schapira  
 Padrones: 111698, 103462  
 Fecha: 2do cuatrimestre 2026
 
-<br/>**_1\. Selección del proyecto a implementar_**
+## <br/>**_1\. Selección del proyecto a implementar_**
 
-**1.1 Objetivo del proyecto y resultados esperados**  
-El objetivo de este proyecto es diseñar e implementar un Dispensador interactivo de premios para mascotas basado en un microcontrolador STM32. El sistema propone desafíos cognitivos simples para la mascota mediante secuencias de luces y sonidos. Cuando la mascota responde correctamente accionando el sensor o botón indicado dentro de un intervalo de tiempo se accionará un mecanismo donde la mascota recibirá una ración de comida como premio.  
+### **1.1 Objetivo del proyecto y resultados esperados**  
+El objetivo de este proyecto es diseñar e implementar un Dispensador interactivo de premios para mascotas basado en un microcontrolador STM32, el mismo tambien funcionará como dispensador automático de comida. El sistema propone desafíos cognitivos simples para la mascota mediante secuencias de luces y sonidos. Cuando la mascota responde correctamente accionando el sensor o botón indicado dentro de un intervalo de tiempo se accionará un mecanismo donde la mascota recibirá una ración de comida como premio.  
 El dispositivo previene la sobrealimentación mediante un control de premios por períodos, supervisa de forma continua la presencia de alimento en el depósito mediante un sensor y permite la consulta de estadísticas de rendimiento a través de una conexión Bluetooth con una aplicación móvil.  
-<br/>**1.2 Proyectos similares**  
+### <br/>**1.2 Proyectos similares**  
 Para definir el alcance adecuado del proyecto se evaluaron tres alternativas:
 
 1. **Opción A (Dispensador básico temporizado):** Control del dispensador mediante intervalos de tiempos fijos sin sensores analógicos.
@@ -36,7 +36,7 @@ Criterios de evaluación:
 
                     Tabla 1: Comparación de alternativas de proyecto
 
-<br/><br/>**1.3 Selección del proyecto**
+### <br/><br/>**1.3 Selección del proyecto**
 
 Se seleccionó la Opción B. Esta alternativa ofrece el equilibrio ideal entre complejidad técnica, viabilidad de ejecución y valor didáctico para la materia. A diferencia del proyecto base o con IoT, introduce interacción en tiempo real, conectividad inalámbrica Bluetooth, procesamiento de datos y almacenamientos de estos en memoria no volátil.
 
@@ -45,13 +45,13 @@ Se seleccionó la Opción B. Esta alternativa ofrece el equilibrio ideal entre c
 
                     Figura 1: Diagrama en bloques del sistema
 
-### _2\. Elicitación de requisitos y casos de uso_
+## _2\. Elicitación de requisitos y casos de uso_
 
 En el mercado argentino existen diversas soluciones para la alimentación automática de mascotas, desde comederos temporizados básicos hasta dispensadores comerciales importados. Sin embargo, la oferta local presenta limitaciones claras: los dispositivos económicos se limitan a temporizadores rígidos sin estímulo dinámico, mientras que las opciones inteligentes importadas resultan costosas, carecen de soporte técnico local y no ofrecen mecánicas de interacción cognitiva para la mascota.  
-Un segundo competidor son los dispensadores automáticos con conectividad Wi-Fi/App de marcas importadas. Si bien permiten la activación remota y la configuración de horarios desde un Smartphone cuentan con un costo es elevado. Además no incluyen módulos de juego o desafíos cognitivos con luces y sonidos que estimulen a la mascota antes de entregar su alimento  
+Un segundo competidor son los dispensadores automáticos con conectividad Wi-Fi/App de marcas importadas. Si bien permiten la activación remota y la configuración de horarios desde un Smartphone cuentan con un costo elevado. Además no incluyen módulos de juego o desafíos cognitivos con luces y sonidos que estimulen a la mascota antes de entregar su alimento  
 En conclusión, no existe en el mercado local una solución integral de costo accesible que combine: juegos interactivos con indicadores luminosos y sonoros para entrenar a la mascota, interrupciones externas para la detección física, censado analógico del depósito de alimento, modos de bajo consumo y conectividad Bluetooth en un único sistema embebido. La implementación propuesta mediante componentes de stock local como STM32, sensores de presión, etc. reduce significativamente los costos de desarrollo y garantizan la disponibilidad de repuestos de manera inmediata.
 
-#### 2.1 Requisitos del proyecto
+### 2.1 Requisitos del proyecto
 
 En la Tabla 2.1 se detallan los principales requisitos funcionales del sistema.
 
@@ -75,7 +75,7 @@ En la Tabla 2.1 se detallan los principales requisitos funcionales del sistema.
 
                     Tabla 2: Requisitos del proyecto
 
-#### 2.2 Caso de uso 1: Dispensación Automática por Intervalo Fijo
+### 2.2 Caso de uso 1: Dispensación Automática por Intervalo Fijo
 
 | **Elemento**        | **Definición**                                                                                                                                                                                                                                                                                          |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -86,7 +86,7 @@ En la Tabla 2.1 se detallan los principales requisitos funcionales del sistema.
 
                     Tabla 3: Caso de uso 1
 
-#### 2.3 Caso de uso 2: Entrenamiento Interactivo con Sensado y Bluetooth
+### 2.3 Caso de uso 2: Entrenamiento Interactivo con Sensado y Bluetooth
 
 | **Elemento**        | **Definición**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -97,7 +97,7 @@ En la Tabla 2.1 se detallan los principales requisitos funcionales del sistema.
 
                     Tabla 4: Caso de uso 2
 
-#### 2.4 Caso de uso 3: Dispensación Remota
+### 2.4 Caso de uso 3: Dispensación Remota
 
 | **Elemento**        | **Definición**                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
