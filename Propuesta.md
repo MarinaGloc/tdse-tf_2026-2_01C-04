@@ -38,7 +38,7 @@ Criterios de evaluación:
 
 ### <br/><br/>**1.3 Selección del proyecto**
 
-Se seleccionó la Opción B. Esta alternativa ofrece el equilibrio ideal entre complejidad técnica, viabilidad de ejecución y valor didáctico para la materia. A diferencia del proyecto base o con IoT, introduce interacción en tiempo real, conectividad inalámbrica Bluetooth, procesamiento de datos y almacenamientos de estos en memoria no volátil.
+Se seleccionó la Opción B que es Base + Bluetooth y censado analógico: en la tabla 1 se presenta la comparación de las tres alternativas evaluadas, donde la opción B obtiene el mayor puntaje total. Esta alternativa ofrece el equilibrio ideal entre complejidad técnica, viabilidad de ejecución y valor didáctico para la materia. A diferencia del proyecto base o con IoT, introduce interacción en tiempo real, conectividad inalámbrica Bluetooth, procesamiento de datos y almacenamientos de estos en memoria no volátil.
 
 <img width="887" height="562" alt="me" src="https://github.com/user-attachments/assets/6cb28888-4404-44e9-8417-4c9123d7b926" />
 
@@ -48,12 +48,22 @@ Se seleccionó la Opción B. Esta alternativa ofrece el equilibrio ideal entre c
 ## _2\. Elicitación de requisitos y casos de uso_
 
 En el mercado argentino existen diversas soluciones para la alimentación automática de mascotas, desde comederos temporizados básicos hasta dispensadores comerciales importados. Sin embargo, la oferta local presenta limitaciones claras: los dispositivos económicos se limitan a temporizadores rígidos sin estímulo dinámico, mientras que las opciones inteligentes importadas resultan costosas, carecen de soporte técnico local y no ofrecen mecánicas de interacción cognitiva para la mascota.  
-Un segundo competidor son los dispensadores automáticos con conectividad Wi-Fi/App de marcas importadas. Si bien permiten la activación remota y la configuración de horarios desde un Smartphone cuentan con un costo elevado. Además no incluyen módulos de juego o desafíos cognitivos con luces y sonidos que estimulen a la mascota antes de entregar su alimento  
-En conclusión, no existe en el mercado local una solución integral de costo accesible que combine: juegos interactivos con indicadores luminosos y sonoros para entrenar a la mascota, interrupciones externas para la detección física, censado analógico del depósito de alimento, modos de bajo consumo y conectividad Bluetooth en un único sistema embebido. La implementación propuesta mediante componentes de stock local como STM32, sensores de presión, etc. reduce significativamente los costos de desarrollo y garantizan la disponibilidad de repuestos de manera inmediata.
+Un segundo competidor son los dispensadores automáticos con conectividad Wi‑Fi/App de marcas importadas. Si bien permiten la activación remota y la configuración de horarios desde un Smartphone cuentan con un costo elevado. Además no incluyen módulos de juego o desafíos cognitivos con luces y sonidos que estimulen a la mascota antes de entregar su alimento.  
+A modo de referencia, en el mercado se pueden encontrar soluciones comerciales con funciones parciales, como se muestra en la Tabla 2. Estas opciones evidencian la necesidad de un sistema más integral y adaptado a la problemática planteada.
+
+| **Solución de referencia** | **Link** | **Descripción breve** |
+| --------------------------- | -------- | -------------------- |
+| Comederos automáticos básicos | [MercadoLibre Argentina – Comederos automáticos](https://listado.mercadolibre.com.ar/comederos-automaticos) | Se comercializan dispensadores con horarios fijos y porciones predefinidas, pero sin sensores de nivel, interacción con la mascota ni lógica de juego. |
+| Dispensadores inteligentes con app | [Petlibro – Automatic Feeder](https://www.petlibro.com/) | Modelos con programación vía app y control de porciones, aunque suelen operar con un enfoque más orientado a alimentación que a estimulación cognitiva o aprendizaje. |
+| Dispensadores Wi‑Fi / remoto | [PetSafe – Automatic Feeders](https://www.petsafe.com/) | Soluciones de alta gama con control remoto y configuración móvil, pero generalmente de costo elevado y con poca integración de señales audibles/visuales para interacción con la mascota. |
+
+                    Tabla 2: Ejemplos de soluciones comerciales de referencia en el mercado argentino y regional
+
+En conclusión, no existe en el mercado una solución integral de costo accesible que combine: juegos interactivos con indicadores luminosos y sonoros para entrenar a la mascota, interrupciones externas para la detección física, censado analógico del depósito de alimento, modos de bajo consumo y conectividad Bluetooth en un único sistema embebido. La implementación propuesta mediante componentes de stock local como STM32, sensores de presión, etc. reduce significativamente los costos de desarrollo y garantizan la disponibilidad de repuestos de manera inmediata.
 
 ### 2.1 Requisitos del proyecto
 
-En la Tabla 2.1 se detallan los principales requisitos funcionales del sistema.
+En la Tabla 3 se detallan los principales requisitos funcionales del sistema.
 
 | **Grupo**                   | **ID** | **Descripción**                                                                                                                                     |
 | --------------------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -73,9 +83,11 @@ En la Tabla 2.1 se detallan los principales requisitos funcionales del sistema.
 | Gestión y seguridad         | 6.1    | El sistema organizará su firmware en una Máquina de Estados Finitos (FSM) con los modos: NORMAL, SET_UP, PAUSA, SIN_ALIMENTO, FALLA y BAJO_CONSUMO. |
 |                             | 6.2    | El sistema pasará a modo BAJO_CONSUMO (Sleep) tras un tiempo de inactividad, despertando mediante interrupción EXTI al toque inicial de la mascota. |
 
-                    Tabla 2: Requisitos del proyecto
+                    Tabla 3: Requisitos del proyecto
 
 ### 2.2 Caso de uso 1: Dispensación Automática por Intervalo Fijo
+
+En la Tabla 4 se presenta el caso de uso de dispensación automática por intervalo fijo, donde el sistema activa la salida del motor sin necesidad de interacción con la mascota.
 
 | **Elemento**        | **Definición**                                                                                                                                                                                                                                                                                          |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -84,9 +96,11 @@ En la Tabla 2.1 se detallan los principales requisitos funcionales del sistema.
 | Flujo principal     | 1\. El temporizador del microcontrolador llega a cero.<br><br>2\. El firmware activa la salida para accionar el servomotor/motor.<br><br>3\. El motor gira durante un tiempo fijo para liberar la ración.<br><br>4\. El motor se detiene y se reinicia la cuenta regresiva para el siguiente intervalo. |
 | Flujos alternativos | **a. Depósito vacío o motor trabado:** El sistema intenta girar el motor de todas formas, ya que no cuenta con sensores analógicos (ADC) ni detección de fallas para detener la marcha.                                                                                                                 |
 
-                    Tabla 3: Caso de uso 1
+                    Tabla 4: Caso de uso 1
 
 ### 2.3 Caso de uso 2: Entrenamiento Interactivo con Sensado y Bluetooth
+
+En la Tabla 5 se describe el caso de uso del entrenamiento interactivo, donde el sistema genera un desafío visual/sonoro y valida la respuesta de la mascota mediante sensores y lógica de control.
 
 | **Elemento**        | **Definición**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -95,9 +109,11 @@ En la Tabla 2.1 se detallan los principales requisitos funcionales del sistema.
 | Flujo principal     | 1\. El STM32 presenta el desafío visual y sonoro.<br><br>2\. La mascota presiona el botón físico, generando una interrupción externa<br><br>3\. El firmware valido el acierto dentro del tiempo límite, emite tono de premio y activa el servomotor (PWM) para liberar la ración.<br><br>4\. El sensor analógico (ADC) actualiza el nivel de alimento del depósito.<br><br>5\. El microcontrolador guarda las métricas de acierto/tiempo en memoria y transmite los datos por UART al módulo Bluetooth. |
 | Flujos alternativos | **a. Fallo de la mascota o timeout:** El sistema registra el error, no acciona el servomotor y notifica la estadística por Bluetooth.<br><br>**b. Depósito vacío**: El ADC detecta falta de alimento y bloquea la dispensación entrando en modo SIN_ALIMENTO.                                                                                                                                                                                                                                           |
 
-                    Tabla 4: Caso de uso 2
+                    Tabla 5: Caso de uso 2
 
 ### 2.4 Caso de uso 3: Dispensación Remota
+
+En la Tabla 6 se presenta el caso de uso de dispensación remota, en el cual el usuario puede activar manualmente la entrega de alimento desde la aplicación móvil.
 
 | **Elemento**        | **Definición**                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -106,4 +122,4 @@ En la Tabla 2.1 se detallan los principales requisitos funcionales del sistema.
 | Flujo principal     | 1\. La aplicación móvil envía la orden de disparo al servidor en la nube.<br><br>2\. El servidor retransmite el comando por Internet hacia el módulo WiFi del dispensador.<br><br>3\. El módulo WiFi pasa la orden al microcontrolador.<br><br>4\. El microcontrolador activa el servomotor para liberar la ración.<br><br>5\. El sistema envía un mensaje de confirmación de vuelta a la nube para notificar al usuario en su celular. |
 | Flujos alternativos | **a. Fallo de conexión a Internet o WiFi caído:** La orden enviada desde la app no llega al dispositivo, la dispensación no se ejecuta y la aplicación muestra un error de tiempo de espera (_timeout_ de red).                                                                                                                                                                                                                         |
 
-                      Tabla 5: Caso de uso 3
+                      Tabla 6: Caso de uso 3
