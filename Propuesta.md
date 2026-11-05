@@ -43,7 +43,7 @@ Se seleccionó la Opción B que es Base + Bluetooth y censado analógico: en la 
 <img width="887" height="562" alt="me" src="https://github.com/user-attachments/assets/6cb28888-4404-44e9-8417-4c9123d7b926" />
 
 
-                    Figura 1: Diagrama en bloques del sistema
+                    Figura 1: Diagrama en bloques del sistema. Este diagrama resume la arquitectura principal del sistema, mostrando la interacción entre los bloques de entrada, procesamiento, sensores, actuation y comunicación.
 
 ## _2\. Elicitación de requisitos y casos de uso_
 
