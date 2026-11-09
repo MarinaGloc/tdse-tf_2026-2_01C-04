@@ -1,3 +1,5 @@
+<p align="center"><img src="imagenes/logo-fiuba.png" alt="Logo FIUBA" /></p>
+
 # **Propuesta de Trabajo Final: Dispensador interactivo de premios para mascotas** 
 <br/>Autores: Marina Gloc, Franco Schapira  
 Padrones: 111698, 103462  
@@ -39,11 +41,12 @@ Criterios de evaluación:
 ### <br/><br/>**1.3 Selección del proyecto**
 
 Se seleccionó la Opción B que es Base + Bluetooth y censado analógico: en la tabla 1 se presenta la comparación de las tres alternativas evaluadas, donde la opción B obtiene el mayor puntaje total. Esta alternativa ofrece el equilibrio ideal entre complejidad técnica, viabilidad de ejecución y valor didáctico para la materia. A diferencia del proyecto base o con IoT, introduce interacción en tiempo real, conectividad inalámbrica Bluetooth, procesamiento de datos y almacenamientos de estos en memoria no volátil.
+El diagrama de la Figura 1 resume la arquitectura principal del sistema, mostrando la interacción entre los bloques de entrada, procesamiento, sensores, actuation y comunicación.
 
-<img width="887" height="562" alt="me" src="https://github.com/user-attachments/assets/6cb28888-4404-44e9-8417-4c9123d7b926" />
+![Diagrama en bloques del sistema](imagenes/diagrama.png)
 
 
-                    Figura 1: Diagrama en bloques del sistema. Este diagrama resume la arquitectura principal del sistema, mostrando la interacción entre los bloques de entrada, procesamiento, sensores, actuation y comunicación.
+                    Figura 1: Diagrama en bloques del sistema. 
 
 ## _2\. Elicitación de requisitos y casos de uso_
 
