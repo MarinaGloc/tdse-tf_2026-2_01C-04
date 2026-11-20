@@ -22,10 +22,10 @@ Este informe presenta el avance del Trabajo Final de acuerdo con la propuesta se
 
 | Req ID | Descripción | Estado |
 |--------|-------------|--------|
-| 1.1 | El sistema presentará desafíos mediante un indicador LED | 🟡 |
+| 1.1 | El sistema presentará desafíos mediante un indicador LED | 🟢 |
 | 1.2 | El sistema presentará un tono de estímulo emitido por el buzzer para llamar la atención de la mascota.  | 🔴 |
-| 1.3 | El sistema registrará la respuesta física de la mascota mediante botones. | 🟡 |
-| 1.4 | El sistema evaluará si la mascota presionó el botón indicado dentro de un tiempo límite configurable. | 🟡 |
+| 1.3 | El sistema registrará la respuesta física de la mascota mediante botones. | 🟢 |
+| 1.4 | El sistema evaluará si la mascota presionó el botón indicado dentro de un tiempo límite configurable. | 🟢 |
 | 1.5 | El sistema reproducirá tonos diferentes para indicar una respuesta correcta o incorrecta. | 🔴 |
 
 #### **Dispensador de alimento**
