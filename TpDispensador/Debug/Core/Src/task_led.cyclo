@@ -1,0 +1,4 @@
+../Core/Src/task_led.c:49:6:task_led_init	2
+../Core/Src/task_led.c:63:10:task_led_get_aciertos	1
+../Core/Src/task_led.c:68:10:task_led_get_errores	1
+../Core/Src/task_led.c:73:6:task_led_update	14
